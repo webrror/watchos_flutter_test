@@ -2,7 +2,7 @@
 
 <img src='showcase/applewatchfluttercompanion.gif' width=450 />
 
-### Tried on Flutter 3.7.1
+### Last tried on Flutter 3.19.0
 
 ## Also take a look at
 
