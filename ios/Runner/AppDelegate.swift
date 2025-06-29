@@ -2,7 +2,7 @@ import UIKit
 import Flutter
 import WatchConnectivity
 
-@UIApplicationMain
+@main
 @objc class AppDelegate: FlutterAppDelegate {
     private var session: WCSession?
     private var channel: FlutterMethodChannel?
@@ -58,6 +58,8 @@ extension AppDelegate: WCSessionDelegate {
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         guard let methodName = message["method"] as? String else { return }
         let data: [String: Any]? = message["data"] as? [String: Any]
-        channel?.invokeMethod(methodName, arguments: data)
+        DispatchQueue.main.async { [weak self] in
+            self?.channel?.invokeMethod(methodName, arguments: data)
+        }
     }
 }
